@@ -1,0 +1,14 @@
+<%= search_form_for @query do |f| %>
+    <% f.search_field :area_cont, placeholder: 'Area' %>
+<% end %>
+
+
+<% @fuels.each do |fuel| %>
+    <%= fuel.area %>
+    <%= fuel.state %>
+    <%= fuel.brand %>
+    <%= fuel.ron_95_price %>
+    <%= fuel.ron_97_price %>
+    <%= fuel.diesel_price %>
+<% end %>
+<%= link_to 'Add New Price', new_fuel_path %>

@@ -1,0 +1,22 @@
+<%= simple_form_for @fuel do |f| %>
+    <%= f.input :state, collection: Malaysia.states %>
+    <%= f.input :area, collection: @cities %>
+    <%= f.input :brand %>
+    <%= f.input :ron_95_price %>
+    <%= f.input :ron_97_price %>
+    <%= f.input :diesel_price %>
+    <%= f.submit %>
+<% end %>
+<script>
+    $('#fuel_state').change(function() {
+       $.ajax({
+            url: "/fuels/cities",
+            type: "GET",
+            data: {'state': $(this).val()},
+            success: function(data) {
+                
+            }
+        })
+        
+    })
+</script>

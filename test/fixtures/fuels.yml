@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  area: MyString
+  state: MyString
+  brand: MyString
+  petrol_type: MyString
+
+two:
+  area: MyString
+  state: MyString
+  brand: MyString
+  petrol_type: MyString
