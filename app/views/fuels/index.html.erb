@@ -1,14 +1,47 @@
-<%= search_form_for @query do |f| %>
-    <% f.search_field :area_cont, placeholder: 'Area' %>
-<% end %>
+<h3>Fuel price for Week <%= Time.now.strftime('%V') %> </h3>
+(<%= (DateTime.current.beginning_of_week + 6).strftime("%d/%m/%Y") %> ~ <%= (DateTime.current.end_of_week + 6).strftime("%d/%m/%Y") %>)
+<br/><br/>
+<div class="card-deck">
+  <div class="card card-inverse card-outline-warning" style="background-color: #444;">
+    <div class="card-header text-warning text-center">
+      <h3>Ron 95</h3>
+    </div>
+    <div class="card-block">
+      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_ron_95_price %></strong></p>
 
+      <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.ron_95.ron_95_price %></strong>
+      <br/> at <%= @fuels.ron_95.brand %>, <%= @fuels.ron_95.area %>, <%= @fuels.ron_95.state %></p>
+      
+    </div>
+  </div>
 
-<% @fuels.each do |fuel| %>
-    <%= fuel.area %>
-    <%= fuel.state %>
-    <%= fuel.brand %>
-    <%= fuel.ron_95_price %>
-    <%= fuel.ron_97_price %>
-    <%= fuel.diesel_price %>
-<% end %>
-<%= link_to 'Add New Price', new_fuel_path %>
+  <div class="card card-inverse card-outline-success" style="background-color: #444;">
+    <div class="card-header text-success text-center">
+      <h3>Ron 97</h3>
+    </div>
+    <div class="card-block">
+      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_ron_97_price %></strong></p>
+
+      <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.ron_97.ron_97_price %></strong>
+      <br/> at <%= @fuels.ron_97.brand %>, <%= @fuels.ron_97.area %>, <%= @fuels.ron_97.state %></p>
+      
+    </div>
+  </div>
+
+  <div class="card card-inverse card-blockquote" style="background-color: #444;">
+    <div class="card-header text-muted text-center">
+      <h3>Diesel</h3>
+    </div>
+    <div class="card-block">
+      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_diesel_price %></strong></p>
+
+      <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.diesel.diesel_price %></strong>
+      <br/> at <%= @fuels.diesel.brand %>, <%= @fuels.diesel.area %>, <%= @fuels.diesel.state %></p>
+       
+    </div>
+  </div>
+</div>
+<br/>
+<p>
+  <%= link_to 'Add New Price', new_fuel_path, :class => 'btn btn-primary' %>
+</p>

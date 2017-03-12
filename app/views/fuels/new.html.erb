@@ -1,22 +1,22 @@
 <%= simple_form_for @fuel do |f| %>
-    <%= f.input :state, collection: Malaysia.states %>
-    <%= f.input :area, collection: @cities %>
-    <%= f.input :brand %>
-    <%= f.input :ron_95_price %>
-    <%= f.input :ron_97_price %>
-    <%= f.input :diesel_price %>
-    <%= f.submit %>
+  <%= f.input :state, collection: Malaysia.states %>
+  <%= f.select :area, options_for_select(@cities || ''), include_blank: 'Select Area' %>
+  <%= f.input :brand, collection: @brands %>
+  <%= f.input :ron_95_price %>
+  <%= f.input :ron_97_price %>
+  <%= f.input :diesel_price %>
+  <%= f.submit "Submit New Prices", class: "btn btn-primary" %>
 <% end %>
+
 <script>
-    $('#fuel_state').change(function() {
-       $.ajax({
-            url: "/fuels/cities",
-            type: "GET",
-            data: {'state': $(this).val()},
-            success: function(data) {
-                
-            }
-        })
-        
+  $('#fuel_state').change(function() {
+   $.ajax({
+      url: "<%= cities_fuels_path %>",
+      type: "GET",
+      data: {
+        state: $(this).val()
+      },
+      dataType: 'script'
     })
+  })
 </script>

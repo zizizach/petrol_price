@@ -33,6 +33,7 @@ MoneyRails.configure do |config|
                             null: false,          # other options will be treated as column options
                             default: 0
                           }
+  config.no_cents_if_whole = false
   #
   # config.currency_column = { prefix: '',
   #                            postfix: '_currency',
