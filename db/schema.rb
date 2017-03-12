@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170312084631) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -25,8 +28,8 @@ ActiveRecord::Schema.define(version: 20170312084631) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_admins_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
 
   create_table "fuel_weekly_max_caps", force: :cascade do |t|
@@ -44,14 +47,14 @@ ActiveRecord::Schema.define(version: 20170312084631) do
     t.string   "area"
     t.string   "state"
     t.string   "brand"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
     t.integer  "ron_95_price_cents",    default: 0,     null: false
     t.string   "ron_95_price_currency", default: "MYR", null: false
     t.integer  "ron_97_price_cents",    default: 0,     null: false
     t.string   "ron_97_price_currency", default: "MYR", null: false
     t.integer  "diesel_price_cents",    default: 0,     null: false
     t.string   "diesel_price_currency", default: "MYR", null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
 end
