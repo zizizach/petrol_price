@@ -12,7 +12,7 @@ class Fuel < ApplicationRecord
   scope :ron_97, -> { where.not(ron_97_price_cents: 0).order(ron_97_price_cents: :asc).first }
   scope :diesel, -> { where.not(diesel_price_cents: 0).order(diesel_price_cents: :asc).first }
 
-  scope :this_week, -> { where('created_at > ?', DateTime.current.beginning_of_week + 6) }
+  scope :this_week, -> { where('created_at > ?', DateTime.current.beginning_of_week) }
 
   def self.search(params)
     query = all
