@@ -7,9 +7,9 @@
       <h3>Ron 95</h3>
     </div>
     <div class="card-block">
-      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_ron_95_price if @fuel_weekly_max_cap.present? %></strong></p>
+      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_ron_95_price if @fuel_weekly_max_cap.present? %>/L</strong></p>
 
-      <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.ron_95.ron_95_price if @fuels.present? %></strong>
+      <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.ron_95.ron_95_price if @fuels.present? %>/L</strong>
       <br/> at <%= @fuels.ron_95.brand if @fuels.present? %>, <%= @fuels.ron_95.area if @fuels.present? %>, <%= @fuels.ron_95.state if @fuels.present? %></p>
       
     </div>
@@ -20,9 +20,9 @@
       <h3>Ron 97</h3>
     </div>
     <div class="card-block">
-      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_ron_97_price if @fuel_weekly_max_cap.present? %></strong></p>
+      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_ron_97_price if @fuel_weekly_max_cap.present? %>/L</strong></p>
 
-      <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.ron_97.ron_97_price if @fuels.present? %></strong>
+      <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.ron_97.ron_97_price if @fuels.present? %>/L</strong>
       <br/> at <%= @fuels.ron_97.brand if @fuels.present? %>, <%= @fuels.ron_97.area if @fuels.present? %>, <%= @fuels.ron_97.state if @fuels.present? %></p>
       
     </div>
@@ -33,9 +33,9 @@
       <h3>Diesel</h3>
     </div>
     <div class="card-block">
-      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_diesel_price if @fuel_weekly_max_cap.present? %></strong></p>
+      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_diesel_price if @fuel_weekly_max_cap.present? %>/L</strong></p>
 
-      <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.diesel.diesel_price if @fuels.present? %></strong>
+      <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.diesel.diesel_price if @fuels.present? %>/L</strong>
       <br/> at <%= @fuels.diesel.brand if @fuels.present? %>, <%= @fuels.diesel.area if @fuels.present? %>, <%= @fuels.diesel.state if @fuels.present? %></p>
        
     </div>
