@@ -1,4 +1,5 @@
 class FuelsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def index
     @fuels = Fuel.search(params)
     @fuel_weekly_max_cap = FuelWeeklyMaxCap.last

@@ -3,4 +3,9 @@
   <%= form_tag(fuels_path, method: :get, class: 'form-inline my-12 my-lg-10') do %>  
     <%= text_field_tag :query, params[:query] , class: 'form-control mr-sm-2', placeholder: 'Malaysia (Enter keywords to search)' %>
   <% end %>
+  <% if user_signed_in? %>
+    <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'btn btn-primary pull-right navbar-right' %>
+  <% else %>
+    <%= link_to 'Login', user_session_path, :class => 'btn btn-primary pull-right navbar-right' %>
+  <% end %> 
 </nav>
