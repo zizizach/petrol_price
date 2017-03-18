@@ -12,6 +12,7 @@ class FuelsController < ApplicationController
   end
 
   def create 
+    params[:fuel][:user_id] = current_user.id
     @fuel = Fuel.new(params_fuel)
     # validates :state, inclusion: {in: %w(Kuala Lumpur), message: "invalid"}
     if @fuel.save
@@ -29,7 +30,7 @@ class FuelsController < ApplicationController
   private
   def params_fuel
     params.require(:fuel).permit(:area, :state, :brand, :ron_95_price,
-      :ron_97_price, :diesel_price)
+      :ron_97_price, :diesel_price, :user_id)
   end
 
 end
