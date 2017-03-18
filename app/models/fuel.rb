@@ -5,8 +5,8 @@ class Fuel < ApplicationRecord
   validates :state, :area, :brand, presence: true
 
   scope :all_field, (lambda do |query|
-    query.present? ? where('area like ? OR state like ? or brand like ?',
-      "%#{query}%", "%#{query}%", "%#{query}%") : all
+    query.present? ? where('lower(area) like ? OR lower(state) like ? or lower(brand) like ?',
+      "%#{query.downcase}%", "%#{query.downcase}%", "%#{query.downcase}%") : all
   end)
 
   scope :ron_95, -> { where.not(ron_95_price_cents: 0).order(ron_95_price_cents: :asc).first }
