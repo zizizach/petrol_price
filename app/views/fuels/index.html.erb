@@ -1,5 +1,5 @@
 <h3>Fuel price for Week <%= Time.now.strftime('%V') %> </h3>
-(<%= (DateTime.current.beginning_of_week).strftime("%d/%m/%Y") %> ~ <%= (DateTime.current.end_of_week).strftime("%d/%m/%Y") %>)
+(<%= (DateTime.current.beginning_of_week + 2).strftime("%d/%m/%Y") %> ~ <%= (DateTime.current.end_of_week + 2).strftime("%d/%m/%Y") %>)
 <br/><br/>
 <div class="card-deck">
   <div class="card card-inverse card-outline-warning" style="background-color: #444;">
