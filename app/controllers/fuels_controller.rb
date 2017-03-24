@@ -36,8 +36,10 @@ class FuelsController < ApplicationController
   def create 
     params[:fuel][:user_id] = current_user.id
     @fuel = Fuel.new(params_fuel)
+    
     # validates :state, inclusion: {in: %w(Kuala Lumpur), message: "invalid"}
     if @fuel.save
+      @fuel.votes.create
       redirect_to root_path
     else
       render :new

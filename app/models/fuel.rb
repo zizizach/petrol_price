@@ -16,7 +16,7 @@ class Fuel < ApplicationRecord
 
   scope :this_week, -> { where('created_at > ?', DateTime.current.beginning_of_week + 2) }
   
-  scope :positive_vote, -> {where('')}
+  scope :positive_vote, -> {where('votes.fuel_id = ?', )}
   
   scope :sort_state, (lambda do |state|
     state.present? ? 
