@@ -8,6 +8,11 @@ Rails.application.routes.draw do
       get 'cities'
       get 'list'
     end
+    member do 
+      post 'upvote'
+      post 'devote'
+      get 'vote_count'
+    end
   end
   resources :fuel_weekly_max_caps
   # The priority is based upon order of creation: first created -> highest priority.

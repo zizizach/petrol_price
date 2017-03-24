@@ -12,6 +12,7 @@
     <th>Ron 95</th>
     <th>Ron 97</th>
     <th>Diesel</th>
+    <th></th>
   </tr>
   
   <% for fuel in @fuels %>
@@ -21,7 +22,10 @@
         <td><%= fuel.brand %></td>
         <td><%= fuel.ron_95_price %></td>
         <td><%= fuel.ron_97_price %></td>
-        <td><%=h fuel.diesel_price %></td>
+        <td><%= fuel.diesel_price %></td>
+        <td><%= link_to "👍", upvote_fuel_path(fuel), method: :post %> / 
+        <%= link_to '👎', devote_fuel_path(fuel), method: :post %>
+        (<%= pluralize(fuel.votes.count, "vote") %>)</td>
       </tr>
   <% end %>
   

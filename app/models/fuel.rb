@@ -1,5 +1,6 @@
 class Fuel < ApplicationRecord
   belongs_to :users
+  has_many :votes, dependent: :destroy
   monetize :ron_95_price_cents, :ron_97_price_cents, :diesel_price_cents
 
   validates :state, :area, :brand, presence: true
@@ -14,6 +15,8 @@ class Fuel < ApplicationRecord
   scope :diesel, -> { where.not(diesel_price_cents: 0).order(diesel_price_cents: :asc).first }
 
   scope :this_week, -> { where('created_at > ?', DateTime.current.beginning_of_week + 2) }
+  
+  scope :positive_vote, -> {where('')}
   
   scope :sort_state, (lambda do |state|
     state.present? ? 

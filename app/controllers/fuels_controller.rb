@@ -1,5 +1,5 @@
 class FuelsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :list]
   def index
     @fuels = Fuel.search(params)
     @fuel_weekly_max_cap = FuelWeeklyMaxCap.last
@@ -9,7 +9,24 @@ class FuelsController < ApplicationController
     # @fuels = Fuel.all
     @fuels = Fuel.sort_by_state(params)
   end
-
+  
+  def upvote
+    @fuel = Fuel.find(params[:id])
+    @fuel.votes.create
+    redirect_to(list_fuels_path)
+  end
+  
+  def devote
+    @fuel = Fuel.find(params[:id])
+    @fuel.votes.first.destroy
+    redirect_to(list_fuels_path)
+  end
+  
+  def vote_count
+    @fuel = Fuel.find(params[:id])
+    @fuel.votes.count
+  end
+  
   def new
     @fuel = Fuel.new
     # @cities = Malaysia.cities['Kuala Lumpur'] # need to be removed
