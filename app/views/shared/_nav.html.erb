@@ -1,11 +1,15 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <%= link_to 'Cheapest Fuel Price in ', root_path, class: 'navbar-brand' %>
-  <%= form_tag(fuels_path, method: :get, class: 'form-inline my-12 my-lg-10') do %>  
-    <%= text_field_tag :query, params[:query] , class: 'form-control mr-sm-2', placeholder: 'Malaysia (Enter keywords to search)' %>
-  <% end %>
-  <% if user_signed_in? %>
-    <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'btn btn-primary pull-right navbar-right' %>
-  <% else %>
-    <%= link_to 'Login', user_session_path, :class => 'btn btn-primary pull-right navbar-right' %>
-  <% end %> 
+  <ul class="navbar-nav mr-auto">
+    <%= form_tag(fuels_path, method: :get, class: 'form-inline my-12 my-lg-10') do %>  
+      <%= text_field_tag :query, params[:query] , class: 'form-control mr-sm-2', placeholder: 'Malaysia (Enter keywords to search)' %>
+    <% end %>
+  </ul>
+  <ul class="navbar-nav">
+    <% if user_signed_in? %>
+      <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'btn btn-primary' %></li>
+    <% else %>
+      <li><%= link_to 'Login', user_session_path, :class => 'btn btn-primary pull-right navbar-right' %></li>
+    <% end %>
+  </ul>
 </nav>
