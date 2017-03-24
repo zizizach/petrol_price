@@ -4,6 +4,11 @@ class FuelsController < ApplicationController
     @fuels = Fuel.search(params)
     @fuel_weekly_max_cap = FuelWeeklyMaxCap.last
   end
+  
+  def list
+    # @fuels = Fuel.all
+    @fuels = Fuel.sort_by_state(params)
+  end
 
   def new
     @fuel = Fuel.new

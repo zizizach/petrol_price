@@ -22,9 +22,9 @@
       <h3>Ron 97</h3>
     </div>
     <div class="card-block">
-      <p>Max cap for this week is <strong><%= humanized_money_with_symbol @fuel_weekly_max_cap.max_ron_97_price if @fuel_weekly_max_cap.present? %>/L</strong></p>
+      <p>Max cap for this week is <strong><%= humanized_money_with_symbol (@fuel_weekly_max_cap.max_ron_97_price * 1.06) if @fuel_weekly_max_cap.present? %>/L</strong> (incl. 6% GST) </p>
       <% if user_signed_in? %>
-        <p>Lowest price is <strong><%= humanized_money_with_symbol @fuels.ron_97.ron_97_price if @fuels.present? %>/L</strong>
+        <p>Lowest price is <strong><%= humanized_money_with_symbol (@fuels.ron_97.ron_97_price * 1.06) if @fuels.present? %>/L</strong> (incl. 6% GST)
         <br/> at <%= @fuels.ron_97.brand if @fuels.present? %>, <%= @fuels.ron_97.area if @fuels.present? %>, <%= @fuels.ron_97.state if @fuels.present? %></p>
       <% else %>
         <p>Please sign in to see the lowest price</p>
@@ -49,5 +49,6 @@
 </div>
 <br/>
 <p>
+  <%= link_to 'Show all prices', list_fuels_path, :class => 'btn btn-primary' %> 
   <%= link_to 'Add New Price', new_fuel_path, :class => 'btn btn-primary' %>
 </p>

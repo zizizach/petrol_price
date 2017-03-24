@@ -14,11 +14,23 @@ class Fuel < ApplicationRecord
   scope :diesel, -> { where.not(diesel_price_cents: 0).order(diesel_price_cents: :asc).first }
 
   scope :this_week, -> { where('created_at > ?', DateTime.current.beginning_of_week + 2) }
+  
+  scope :sort_state, (lambda do |state|
+    state.present? ? 
+    where('lower(state) like ?', "%#{state.downcase}%") : all
+  end)
 
   def self.search(params)
     query = all
     query = query.this_week
     query = query.all_field(params[:query])
+    query
+  end
+  
+  def self.sort_by_state(params)
+    query = all
+    query = query.this_week
+    query = query.sort_state(params[:state])
     query
   end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :fuels, only: [:index, :new, :create] do
     collection do
       get 'cities'
+      get 'list'
     end
   end
   resources :fuel_weekly_max_caps
