@@ -7,11 +7,13 @@ Rails.application.routes.draw do
     collection do
       get 'cities'
       get 'list'
+      get 'adminlist'
     end
     member do 
       post 'upvote'
       post 'devote'
       get 'vote_count'
+      delete 'destroy'
     end
   end
   resources :fuel_weekly_max_caps

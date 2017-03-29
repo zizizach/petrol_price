@@ -1,11 +1,17 @@
 class FuelsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :list]
+  before_action :authenticate_admin!, only: [:destroy]
   def index
     @fuels = Fuel.search(params)
     @fuel_weekly_max_cap = FuelWeeklyMaxCap.last
   end
   
   def list
+    # @fuels = Fuel.all
+    @fuels = Fuel.sort_by_state(params)
+  end
+  
+  def adminlist
     # @fuels = Fuel.all
     @fuels = Fuel.sort_by_state(params)
   end
@@ -49,6 +55,11 @@ class FuelsController < ApplicationController
 
   def cities
     @cities = Malaysia.cities[params[:state]]
+  end
+  
+  def destroy
+    @fuel = Fuel.find(params[:id])
+    @fuel.destroy
   end
 
   private

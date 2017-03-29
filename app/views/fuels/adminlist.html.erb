@@ -1,0 +1,31 @@
+<%= link_to "All" %>
+<% Malaysia.states.each do |state| %>
+   | <%= link_to state, list_fuels_path(state: state)  %>
+<% end %>
+<br/><br/>
+
+<table class="table">
+  <tr>
+    <th>State</th>
+    <th>City</th>
+    <th>Brand</th>
+    <th>Ron 95</th>
+    <th>Ron 97</th>
+    <th>Diesel</th>
+    <th></th>
+  </tr>
+  
+  <% for fuel in @fuels %>
+      <tr>
+        <td><%= fuel.state %></td>
+        <td><%= fuel.area %></td>
+        <td><%= fuel.brand %></td>
+        <td><%= fuel.ron_95_price %></td>
+        <td><%= fuel.ron_97_price %></td>
+        <td><%= fuel.diesel_price %></td>
+        <% byebug %>
+        <td><%= link_to "delete", fuel_path(fuel), method: :delete %></td>
+      </tr>
+  <% end %>
+  
+</table>
