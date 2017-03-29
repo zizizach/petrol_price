@@ -36,7 +36,7 @@ class FuelsController < ApplicationController
   def new
     @fuel = Fuel.new
     # @cities = Malaysia.cities['Kuala Lumpur'] # need to be removed
-    @brands = ['Shell','Petronas','Petron','Caltex','BHP']
+    @brands = ['All','Shell','Petronas','Petron','Caltex','BHP']
   end
 
   def create 
