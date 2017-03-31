@@ -14,9 +14,9 @@ class Fuel < ApplicationRecord
   scope :ron_97, -> { where.not(ron_97_price_cents: 0).order(ron_97_price_cents: :asc).first }
   scope :diesel, -> { where.not(diesel_price_cents: 0).order(diesel_price_cents: :asc).first }
 
-  scope :this_week, -> { where('created_at > ?', DateTime.current.beginning_of_week + 2) }
+  scope :this_week, -> { where('fuels.created_at > ?', DateTime.current.beginning_of_week(:thursday)) }
   
-  scope :positive_vote, -> {where('votes.fuel_id = ?', )}
+  # scope :positive_vote, -> {joins(:votes).where('count(1) > 0')}
   
   scope :sort_state, (lambda do |state|
     state.present? ? 
@@ -26,6 +26,7 @@ class Fuel < ApplicationRecord
   def self.search(params)
     query = all
     query = query.this_week
+    # query = query.positive_vote
     query = query.all_field(params[:query])
     query
   end
